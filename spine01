@@ -1,0 +1,39 @@
+# 21.04 05-SEP-2021
+#
+ip link add mvab01 type bridge vlan_filtering 1
+#
+ip link set dev enp0s8 master mvab1 
+ip link set dev enp0s9 master mvab1
+#
+ip link set dev mvab01 up
+ip link set dev enp0s8 up
+ip link set dev enp0s9 up
+#
+bridge link
+#
+ip address add 1.1.1.2/30 dev enp0s3
+ip link set dev enp0s3 up
+#
+ip a
+# ip link add wan type vrf table 1001
+#
+ip link set dev wan up
+ip link set dev enp0s3 master wan
+#
+ip -d link show type vrf
+ip -br link show type vrf
+ip link show vrf wan
+ip link show master wan
+#
+ip route show vrf wan
+#
+ip link add link mvab01 name vlan20 type vlan id 20 protocol 802.1q bridge_binding off
+bridge vlan add vid 20 dev mvab01
+ip link set dev vlan20 master wan
+ip address add 20.20.2.254 dev vlan20
+#
+ip link
+ip link show vrf wan
+ip route show vrf wan
+#
+# /proc/sys/net/ipv4/ip_forward
