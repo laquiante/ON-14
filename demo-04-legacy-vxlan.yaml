@@ -56,9 +56,9 @@
     - name: activate changes on server01
       shell: /sbin/ifreload -a
       
- # provider01
+# provider01
  
- - hosts: provider01
+- hosts: provider01
   name: provider01 Interfaces
   become: yes
   gather_facts: no
@@ -71,9 +71,9 @@
     - name: activate changes on provider01
       shell: /sbin/ifreload -a
  
- # spine01
+# spine01
  
- - hosts: spine01
+- hosts: spine01
   name: spine01 Interfaces
   become: yes
   gather_facts: no
