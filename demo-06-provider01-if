@@ -32,7 +32,7 @@ iface swp11
 
 auto swp12
 iface swp12
-        bridge-access 20
+        bridge-access 10
 
 auto mvab01
 iface mvab01
@@ -45,7 +45,7 @@ auto mvab02
 iface mvab02
         bridge-ports swp12 vni0-mvab02
         hwaddress 44:38:39:00:01:23
-        bridge-vids 20 
+        bridge-vids 10 
         bridge-vlan-aware yes
 
 auto vni0-mvab01
@@ -56,28 +56,28 @@ iface vni0-mvab01
 
 auto vni0-mvab02
 iface vni0-mvab02
-        bridge-vlan-vni-map 20=20
+        bridge-vlan-vni-map 10=10
         bridge-learning off
         bridge-arp-nd-suppress off
         
-auto vlan10-mvab01
-iface vlan10-mvab01
-        address 10.10.1.252/24
-        vlan-id 10
-        vlan-raw-device mvab01
-        vrf vrf-mvab01
+#auto vlan10-mvab01
+#iface vlan10-mvab01
+#        address 10.10.1.252/24
+#        vlan-id 10
+#        vlan-raw-device mvab01
+#        vrf vrf-mvab01
 
-auto vlan10-mvab02
-iface vlan10-mvab02
-        address 20.20.1.252/24
-        vlan-id 20
-        vlan-raw-device mvab02
-        vrf vrf-mvab02
+#auto vlan10-mvab02
+#iface vlan10-mvab02
+#        address 10.10.1.252/24
+#        vlan-id 10
+#        vlan-raw-device mvab02
+#        vrf vrf-mvab02
         
-auto vlan30-mvab01
-iface vlan30-mvab01
-        address 30.30.1.252/24
-        vlan-id 30
-        vlan-raw-device mvab01
-        vrf vrf-mvab01
+#auto vlan30-mvab01
+#iface vlan30-mvab01
+#        address 30.30.1.252/24
+#        vlan-id 30
+#        vlan-raw-device mvab01
+#        vrf vrf-mvab01
 
