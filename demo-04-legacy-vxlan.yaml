@@ -6,7 +6,7 @@
   become: yes
   gather_facts: no
   tasks:
-    - name: IF setup for vlan 10 - SVD demo
+    - name: IF setup for vlan 10 - legacy/SVD demo
       copy: 
         src: /home/cumulus/ON-14/demo-04-host01-if
         dest: /etc/network/interfaces
@@ -19,7 +19,7 @@
   become: yes
   gather_facts: no
   tasks:
-    - name: IF setup for vlan 30 - SVD demo
+    - name: IF setup for vlan 30 - legacy/SVD demo
       copy: 
         src: /home/cumulus/ON-14/demo-04-host02-if
         dest: /etc/network/interfaces
@@ -35,7 +35,7 @@
   become: yes
   gather_facts: no
   tasks:
-    - name: IF setup for vlan 10 - SVD demo
+    - name: IF setup for vlan 10 - legacy/SVD demo
       copy: 
         src: /home/cumulus/ON-14/demo-04-server01-if
         dest: /etc/network/interfaces
@@ -48,7 +48,7 @@
   become: yes
   gather_facts: no
   tasks:
-    - name: IF setup for vlan 30 - SVD demo
+    - name: IF setup for vlan 30 - legacy/SVD demo
       copy: 
         src: /home/cumulus/ON-14/demo-04-server02-if
         dest: /etc/network/interfaces
@@ -74,7 +74,7 @@
 # spine01
  
 - hosts: spine01
-  name: spine01 Interfaces
+  name: spine01 Interfaces without vrfs
   become: yes
   gather_facts: no
   tasks:
@@ -110,7 +110,7 @@
 # spine01 routing      
       
 - hosts: spine01
-  name: Routing setup 
+  name: Routing setup without vrfs
   become: yes
   gather_facts: no
   tasks:
