@@ -63,6 +63,6 @@ iface vni0-mvab01
 
 auto vni0-mvab02
 iface vni0-mvab02
-        bridge-vlan-vni-map 10=10
+        bridge-vlan-vni-map 20=20
         bridge-learning off
         bridge-arp-nd-suppress off
