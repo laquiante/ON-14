@@ -19,12 +19,12 @@ auto swp12
 iface swp12
         bridge-access 10
         
-auto vrf-mvab01
-iface vrf-mvab01
+auto vrf mvab01
+iface vrf mvab01
         vrf-table auto
         
-auto vrf-mvab02
-iface vrf-mvab02
+auto vrf mvab02
+iface vrf mvab02
         vrf-table auto
 
 auto mvab01
@@ -46,14 +46,14 @@ iface vlan10-mvab01
         address 10.10.1.253/24
         vlan-id 10
         vlan-raw-device mvab01
-        vrf-mvab01
+        vrf mvab01
         
 auto vlan10-mvab02
 iface vlan10-mvab02
         address 10.10.1.253/24
         vlan-id 10
         vlan-raw-device mvab02
-        vrf-mvab02
+        vrf mvab02
 
 auto vni0-mvab01
 iface vni0-mvab01
