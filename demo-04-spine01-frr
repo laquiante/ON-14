@@ -4,7 +4,7 @@ hostname spine01
 log syslog informational
 service integrated-vtysh-config
 !
-router bgp 65001 vrf wan
+router bgp 65001
  bgp router-id 10.0.0.2
  neighbor 1.1.1.1 remote-as external
  !
