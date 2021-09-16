@@ -37,7 +37,7 @@ iface vlan30
         address 30.30.2.253/24
         vlan-id 30
         vlan-raw-device bridge
-        vrf wan
+#        vrf wan
 
 #auto wan
 #iface wan
