@@ -52,11 +52,13 @@ auto vni0-mvab01
 iface vni0-mvab01
         bridge-vlan-vni-map 10=10
         bridge-learning off
+        bridge-arp-nd-suppress off
 
 auto vni0-mvab02
 iface vni0-mvab02
         bridge-vlan-vni-map 10=10
         bridge-learning off
+        bridge-arp-nd-suppress off
         
 auto vlan10-mvab01
 iface vlan10-mvab01
