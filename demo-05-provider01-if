@@ -1,0 +1,53 @@
+auto lo
+iface lo inet loopback
+        address 10.0.0.1
+
+auto mgmt
+iface mgmt
+        vrf-table auto
+        address 127.0.0.1/8
+        address ::1/128
+
+auto eth0
+iface eth0 inet dhcp
+        vrf mgmt
+        post-up sysctl -w net.ipv6.conf.eth0.accept_ra=2
+
+auto swp1
+iface swp1
+        address 1.1.1.1/30
+
+auto swp11
+iface swp11
+        bridge-access 10
+
+auto swp12
+iface swp12
+        bridge-access 30
+
+auto bridge
+iface bridge
+        bridge-ports swp11 swp12 vni0
+        bridge-vids 10 30
+        bridge-vlan-aware yes
+
+auto vni0
+iface vni0
+        bridge-vlan-vni-map 10=10 30=30
+        bridge-arp-nd-suppress on
+        bridge-learning off
+        mstpctl-bpduguard yes
+        mstpctl-portbpdufilter yes
+        vxlan-local-tunnelip 10.0.0.1
+        
+auto vlan10
+iface vlan10
+        address 10.10.1.252/24
+        vlan-id 10
+        vlan-raw-device bridge
+        
+auto vlan30
+iface vlan30
+       address 30.30.1.252/24
+       vlan-id 30
+       vlan-raw-device bridge
