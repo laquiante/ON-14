@@ -18,6 +18,14 @@ iface swp11
 auto swp12
 iface swp12
         bridge-access 10
+        
+auto vrf-mvab01
+iface vrf-mvab01
+        vrf-table auto
+        
+auto vrf-mvab02
+iface vrf-mvab02
+        vrf-table auto
 
 auto mvab01
 iface mvab01
