@@ -10,4 +10,4 @@ auto eth1
 iface eth1
         address 10.10.1.1/24
         post-up /sbin/route add -net 1.0.0.0 netmask 255.0.0.0 gw 10.10.1.252
-       
+        post-up /sbin/route add -net 30.0.0.0 netmask 255.0.0.0 gw 10.10.1.252     
