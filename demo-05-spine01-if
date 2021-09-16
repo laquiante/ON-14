@@ -1,6 +1,7 @@
 auto lo
 iface lo inet loopback
-        address 10.0.0.2
+        address 10.0.0.2/32
+        vxlan-local-tunnelip 10.0.0.2
 
 auto eth0
 iface eth0 inet dhcp
@@ -21,6 +22,7 @@ iface swp12
 auto bridge
 iface bridge
         bridge-ports swp11 swp12 vni0
+        hwaddress 44:38:39:00:00:24
         bridge-vids 10 30
         bridge-vlan-aware yes
 
@@ -38,7 +40,5 @@ iface vlan30
 
 auto vni0
 iface vni0
-        bridge-vlan-vni-map 10=10
-        bridge-arp-nd-suppress on
+        bridge-vlan-vni-map 10=10 30=30
         bridge-learning off
-        vxlan-local-tunnelip 10.0.0.1
