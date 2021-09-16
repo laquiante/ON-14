@@ -17,7 +17,7 @@ iface swp11
 
 auto swp12
 iface swp12
-        bridge-access 10
+        bridge-access 20
         
 auto vrf-mvab01
 iface vrf-mvab01
@@ -38,7 +38,7 @@ auto mvab02
 iface mvab02
         bridge-ports swp12 vni0-mvab02
         hwaddress 44:38:39:00:01:24
-        bridge-vids 10
+        bridge-vids 20
         bridge-vlan-aware yes
 
 auto vlan10-mvab01
@@ -51,7 +51,7 @@ iface vlan10-mvab01
 auto vlan10-mvab02
 iface vlan10-mvab02
         address 10.10.1.253/24
-        vlan-id 10
+        vlan-id 20
         vlan-raw-device mvab02
         vrf vrf-mvab02
 
