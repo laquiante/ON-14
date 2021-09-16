@@ -95,7 +95,7 @@
   tasks:
     - name: EVPN
       copy:
-        src: /home/cumulus/ON-14/demo-05-provider01-frr
+        src: /home/cumulus/ON-14/demo-04-provider01-frr
         dest: /etc/frr/frr.conf
       notify:
         - frr_reload
@@ -116,7 +116,7 @@
   tasks:
     - name: EVPN
       copy:
-        src: /home/cumulus/ON-14/demo-05-spine01-frr
+        src: /home/cumulus/ON-14/demo-04-spine01-frr
         dest: /etc/frr/frr.conf
       notify:
         - frr_reload
