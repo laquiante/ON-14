@@ -50,7 +50,7 @@ iface vlan10-mvab01
         
 auto vlan10-mvab02
 iface vlan10-mvab02
-        address 10.10.1.253/24
+        address 20.20.1.253/24
         vlan-id 20
         vlan-raw-device mvab02
         vrf vrf-mvab02
