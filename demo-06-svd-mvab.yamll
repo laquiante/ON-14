@@ -1,0 +1,129 @@
+# host01
+# host02
+
+- hosts: host01
+  name: host01 Interfaces
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: IF setup for vlan 10 - SVD-MVAB demo
+      copy: 
+        src: /home/cumulus/ON-14/demo-06-host01-if
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activate changes on host01
+      shell: /sbin/ifreload -a
+      
+- hosts: host02
+  name: host02 Interfaces
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: IF setup for vlan 10 - SVD-MVAB demo
+      copy: 
+        src: /home/cumulus/ON-14/demo-06-host02-if
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activate changes on host01
+      shell: /sbin/ifreload -a
+      
+# server01
+# server02
+
+- hosts: server01
+  name: server01 Interfaces
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: IF setup for vlan 10 - SVD-MVAB demo
+      copy: 
+        src: /home/cumulus/ON-14/demo-06-server01-if
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activate changes on server01
+      shell: /sbin/ifreload -a
+      
+- hosts: server02
+  name: server02 Interfaces
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: IF setup for vlan 10 - SVD-MVAB demo
+      copy: 
+        src: /home/cumulus/ON-14/demo-06-server02-if
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activate changes on server01
+      shell: /sbin/ifreload -a
+      
+# provider01
+ 
+- hosts: provider01
+  name: provider01 Interfaces
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: IF setup 
+      copy: 
+        src: /home/cumulus/ON-14/demo-06-provider01-if
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activate changes on provider01
+      shell: /sbin/ifreload -a
+ 
+# spine01
+ 
+- hosts: spine01
+  name: spine01 Interfaces without vrfs
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: IF setup 
+      copy: 
+        src: /home/cumulus/ON-14/demo-06-spine01-if
+        dest: /etc/network/interfaces
+    # aktivieren
+    - name: activate changes on spine01
+      shell: /sbin/ifreload -a
+
+# provider01 routing      
+      
+- hosts: provider01
+  name: Routing setup 
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: EVPN
+      copy:
+        src: /home/cumulus/ON-14/demo-04-provider01-frr
+        dest: /etc/frr/frr.conf
+      notify:
+        - frr_reload
+        
+  handlers:
+    - name: frr_reload
+      service:
+        name=frr
+        state=reloaded
+      listen: "frr_reload"
+      
+# spine01 routing      
+      
+- hosts: spine01
+  name: Routing setup without vrfs
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: EVPN
+      copy:
+        src: /home/cumulus/ON-14/demo-04-spine01-frr
+        dest: /etc/frr/frr.conf
+      notify:
+        - frr_reload
+        
+  handlers:
+    - name: frr_reload
+      service:
+        name=frr
+        state=reloaded
+      listen: "frr_reload" 
