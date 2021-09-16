@@ -41,6 +41,4 @@ iface vni0
         bridge-vlan-vni-map 10=10
         bridge-arp-nd-suppress on
         bridge-learning off
-        mstpctl-bpduguard yes
-        mstpctl-portbpdufilter yes
         vxlan-local-tunnelip 10.0.0.1
